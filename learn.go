@@ -2,7 +2,7 @@ package main
 
 import (
   "github.com/cioc/learn/input"
-  "github.com/cioc/learn/linear"
+  "github.com/cioc/learn/model/linear"
   "fmt"
 )
 
