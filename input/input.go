@@ -18,13 +18,14 @@ func extractSample(l string) ([]float64, float64, error) {
     return nil, 0, errors.New("incorrectly formatted sample")
   }
   featureStrings := strings.Split(separated[0], ",")
-  features := make([]float64, len(featureStrings), len(featureStrings))
+  features := make([]float64, len(featureStrings) + 1, len(featureStrings) + 1)
+  features[0] = 1 //bias
   for i, s := range(featureStrings) {
     f, err := strconv.ParseFloat(s, 64)
     if err != nil {
       return nil, 0, errors.New("incorrectly formatted feature")
     }
-    features[i] = f
+    features[i + 1] = f
   }
   val, err := strconv.ParseFloat(separated[1], 64)
   return features, val, err

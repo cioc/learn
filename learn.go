@@ -2,6 +2,7 @@ package main
 
 import (
   "github.com/cioc/learn/input"
+  "github.com/cioc/learn/linear"
   "fmt"
 )
 
@@ -15,4 +16,6 @@ func main() {
     fmt.Print(" - ")
     fmt.Println(vals[i])
   }
+  lin := linear.New([]float64{1.0,1.0,1.0}, features, vals)
+  fmt.Println(lin.Cost())
 }
