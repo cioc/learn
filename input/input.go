@@ -9,6 +9,7 @@ import (
   "strconv"
 )
 
+//this is no good - lets deal with this later
 const MaxSample int = 10000
 
 func extractSample(l string) ([]float64, float64, error) {
