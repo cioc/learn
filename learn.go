@@ -3,6 +3,7 @@ package main
 import (
   "github.com/cioc/learn/input"
   "github.com/cioc/learn/model/linear"
+  "github.com/cioc/learn/optimize"
   "fmt"
 )
 
@@ -16,6 +17,12 @@ func main() {
     fmt.Print(" - ")
     fmt.Println(vals[i])
   }
-  lin := linear.New([]float64{1.0,1.0,1.0}, features, vals)
-  fmt.Println(lin.Cost())
+  //TODO - NUMBER # PARAMS MUST MATCH # FEATURES
+  lin := linear.New([]float64{0.0,0.0}, features, vals)
+  for i := 0; i < 1500; i++ {
+    fmt.Println(lin.Cost())
+    params2 := optimize.GradientDescent(lin, 0.01)
+    fmt.Println(params2)
+    lin.SetParams(params2)
+  }
 }

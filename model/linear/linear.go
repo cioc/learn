@@ -25,7 +25,7 @@ func (model Linear) Cost() (float64) {
   accum = 0
   for i := range(model.samples) {
     err := dot(model.samples[i], model.params) - model.labels[i]
-    err = err * err
+    err *= err
     accum += err
   }
   return (1 / (2 * m)) * accum
@@ -36,7 +36,7 @@ func (model Linear) Params() ([]float64) {
 }
 
 func (model Linear) SetParams(params []float64) {
-  model.params = params
+  copy(model.params, params)
 }
 
 func (model Linear) Gradient(delta int) (float64) {
